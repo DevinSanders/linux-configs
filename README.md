@@ -1,1 +1,1 @@
-# My Linxu Configuration Files
+# My Linux Configuration Files
