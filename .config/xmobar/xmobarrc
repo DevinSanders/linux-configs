@@ -1,0 +1,41 @@
+Config { font = "xft:Liberation Mono:pixelsize=16:antialias=true:hinting=true"
+       , additionalFonts = [  "xft:Font Awesome 5 Free Solid:pixelsize=16"
+                            , "xft:Font Awesome 5 Brands:pixelsize=16"
+                           ]
+       , borderColor = "black"
+       , border = TopB
+       , bgColor = "black"
+       , fgColor = "grey"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = ".xmonad/xpm/"  --default: "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Weather "KBHM" ["-t","<tempF>F",
+                                          "-L","18","-H","25",
+                                          "--normal","green",
+                                          "--high","red",
+                                          "--low","lightblue"] 36000
+                    , Run Network "eth0" ["-L","0","-H","32",
+                                          "--normal","green","--high","red"] 10
+                    , Run Network "wlan0" ["-L","0","-H","32",
+                                          "--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %D %I:%M%p" "date" 10
+                    , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %eth0% - %wlan0% }\
+                    \{ <fc=#ee9a00>%date%</fc> | %KBHM% | %trayerpad%"
+       }

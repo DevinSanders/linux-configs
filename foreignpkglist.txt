@@ -1,0 +1,6 @@
+franz
+jetbrains-toolbox
+onlyoffice-bin
+snapd
+touchegg
+wxgtk3-dev
